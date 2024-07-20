@@ -66,7 +66,7 @@ let generatedQuestion;
 function getQuestion() {
     hideQuestionContainer();
     showLoadingSpinner();
-    postData('https://elianrenteria.me/api/trivia', { category: getRandomElement(categories) })
+    postData('', { category: getRandomElement(categories) })
         .then(data => {
             console.log(data); // JSON data parsed by `response.json()` call
             correct_anwser = data.answers[0];
