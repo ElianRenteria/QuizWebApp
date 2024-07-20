@@ -70,8 +70,8 @@ body {
     height: 100%;
     padding-left: 2%;
     padding-right: 2%;
-    padding-top: 4%;
-    padding-bottom: 4%;
+    padding-top: 5%;
+    padding-bottom: 5%;
     margin-left: 2%;
     margin-right: 2%;
     font-size: 16px;
@@ -130,4 +130,20 @@ h1 {
     background-color: #8338EC; 
     color: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
+}
+
+/* General styles for hover effect */
+.btn:hover {
+    background-color: #3A86FF;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.233);
+}
+
+/* Disable hover effect on touch devices */
+@media (pointer: coarse) {
+    .btn:hover {
+        background-color: #8338EC;
+        color: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
+    }
 }
