@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Coder Trivia</h1>
+        <div id="loading-spinner" class="spinner hidden"></div>
+        <div id="question-container" class="hidden">
+            <div id="question"></div>
+            <div id="answer-buttons" class="btn-container">
+                <div class="top-questions">
+                    <button class="btn" onclick="selectAnswer(this)"></button>
+                    <button class="btn" onclick="selectAnswer(this)"></button>
+                </div>
+                <div class="bottom-questions">
+                    <button class="btn" onclick="selectAnswer(this)"></button>
+                    <button class="btn" onclick="selectAnswer(this)"></button>
+                </div>
+            </div>
+        </div>
+        <div id="score-container">
+            Score: <span id="score">0</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
