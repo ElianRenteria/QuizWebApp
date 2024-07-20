@@ -32,11 +32,23 @@ function scrambleArray(arr) {
     for (let i = array.length - 1; i > 0; i--) {
         // Generate a random index from 0 to i
         const j = Math.floor(Math.random() * (i + 1));
-        
         // Swap elements at indexes i and j
         [array[i], array[j]] = [array[j], array[i]];
     }
     
+    return fill_blanks(array);
+}
+
+
+function fill_blanks(arr) {
+    let array = arr.slice();
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].text === "" || arr[i].text === null || arr[i].text === undefined) {
+            array[i].text = "None of the Above"; // Use `=` for assignment
+        } else {
+            array[i].text = arr[i].text;
+        }
+    }
     return array;
 }
 
