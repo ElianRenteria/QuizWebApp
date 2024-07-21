@@ -5,7 +5,7 @@ const loadingSpinner = document.getElementById('loading-spinner');
 const questionContainer = document.getElementById('question-container');
 
 let score = 0;
-let correct_anwser = "";
+let correct_answer = "";
 const categories = [
     'Art', 'Science', 'History', 'Technology', 'Mathematics', 'Literature', 'Music', 'Philosophy',
     'Psychology', 'Sociology', 'Politics', 'Economics', 'Geography', 'Biology', 'Chemistry', 
@@ -78,10 +78,10 @@ let generatedQuestion;
 function getQuestion() {
     hideQuestionContainer();
     showLoadingSpinner();
-    postData('', { category: getRandomElement(categories) })
+    postData("", { category: getRandomElement(categories) })
         .then(data => {
             console.log(data); // JSON data parsed by `response.json()` call
-            correct_anwser = data.answers[0];
+            correct_answer = data.answers[0];
             generatedQuestion = {
                 text: data.question,
                 answers: scrambleArray([
@@ -111,16 +111,27 @@ function showQuestion(question) {
 
 function selectAnswer(button) {
     const correct = button.dataset.correct === 'true';
+    const notification = document.getElementById('notification');
+    
     if (correct) {
         score++;
         scoreElement.textContent = score;
-        alert('Correct!');
-        getQuestion();
+        notification.textContent = 'Correct!';
+        notification.className = 'notification correct';
     } else {
-        alert('Wrong!\nThe correct answer was: ' + correct_anwser);
-        getQuestion();
+        notification.textContent = 'Wrong! The correct answer was: ' + correct_answer;
+        notification.className = 'notification wrong';
     }
+
+    notification.style.display = 'block';
+
+    // Hide the notification after 2 seconds
+    setTimeout(() => {
+        notification.style.display = 'none';
+        getQuestion();
+    }, 2000);
 }
+
 
 function showLoadingSpinner() {
     loadingSpinner.classList.remove('hidden');
